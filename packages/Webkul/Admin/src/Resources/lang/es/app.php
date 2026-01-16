@@ -99,7 +99,7 @@ return [
             'actions' => [
                 'mail' => [
                     'btn'          => 'Correo',
-                    'title'        => 'Redactar correo',
+                    'title'        => 'correo',
                     'to'           => 'Para',
                     'enter-emails' => 'Presiona Enter para agregar direcciones de correo electrónico',
                     'cc'           => 'CC',
@@ -534,7 +534,7 @@ return [
                     'actions' => [
                         'mail' => [
                             'btn'      => 'Correo',
-                            'title'    => 'Redactar Correo',
+                            'title'    => 'Correo',
                             'to'       => 'Para',
                             'cc'       => 'CC',
                             'bcc'      => 'CCO',
@@ -1644,10 +1644,10 @@ return [
             'outbox'           => 'Bandeja de salida',
             'sent'             => 'Enviados',
             'trash'            => 'Papelera',
-            'compose-mail-btn' => 'Redactar Correo',
+            'compose-mail-btn' => 'Correo',
             'btn'              => 'Correo',
             'mail'             => [
-                'title'        => 'Redactar Correo',
+                'title'        => 'Correo',
                 'to'           => 'Para',
                 'enter-emails' => 'Presiona enter para añadir correos',
                 'cc'           => 'CC',

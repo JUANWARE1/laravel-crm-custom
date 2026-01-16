@@ -1,143 +1,129 @@
-<p align="center">
-    <a href="https://krayincrm.com">
-        <picture>
-            <source media="(prefers-color-scheme: dark)" height="100" srcset="packages/Webkul/Admin/src/Resources/assets/images/dark-logo.svg">
-            <source media="(prefers-color-scheme: light)" height="100" srcset="packages/Webkul/Admin/src/Resources/assets/images/logo.svg">
-            <img alt="Krayin CRM" height="100" src="packages/Webkul/Admin/src/Resources/assets/images/logo.svg">
-        </picture>
-    </a>
-</p>
+---------------------------------------------------- CRM LARAVEL HIBRIDO ----------------------------------------------------------------
 
-<p align="center">
-<a href="https://packagist.org/packages/krayin/laravel-crm"><img src="https://poser.pugx.org/krayin/laravel-crm/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/krayin/laravel-crm"><img src="https://poser.pugx.org/krayin/laravel-crm/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/krayin/laravel-crm"><img src="https://poser.pugx.org/krayin/laravel-crm/license.svg" alt="License"></a>
-</p>
+Este proyecto es un CRM híbrido construido sobre Laravel como framework base, integrando módulos desarrollados en PHP. Esta arquitectura permite aprovechar las ventajas de Laravel (seguridad, configuración, estructura, middlewares) mientras se mantiene compatibilidad con módulos existentes o desarrollados fuera del flujo MVC estándar.
+El sistema está diseñado para ser escalable, mantenible y comprensible para nuevos ingenieros que se integren al proyecto.
 
+--------------------------------------------------- ARQUITECTURA DEL SISTEMA -------------------------------------------------------------
 
-![enter image description here](https://raw.githubusercontent.com/krayin/temp-media/master/dashboard.png)
+El proyecto se divide en tres capas principales:
 
-## Topics
+ ■ Capa Framework (Laravel)
+ ■ Manejo de configuración general
+ ■ Autenticación de usuarios
+ ■ Middlewares y seguridad
+ ■ Rutas base del sistema
 
-1. [Introduction](#introduction)
-2. [Documentation](#documentation)
-3. [Requirements](#requirements)
-4. [Installation & Configuration](#installation-and-configuration)
-4. [Docker Installation](https://devdocs.krayincrm.com/2.0/introduction/docker.html)
-5. [License](#license)
-6. [Security Vulnerabilities](#security-vulnerabilities)
+Ubicación principal:
+/app
+/routes
+/config
+/database 
 
-### Introduction
+Capa Core CRM (Legacy):
 
-[Krayin CRM](https://krayincrm.com) is a hand tailored CRM framework built on some of the hottest opensource technologies
-such as [Laravel](https://laravel.com) (a [PHP](https://secure.php.net/) framework) and [Vue.js](https://vuejs.org)
-a progressive Javascript framework.
+ ■ Logica de negocio desarrollada en PHP tradicional
+ ■ Vistas renderizadas sin Blade
+ ■ Includes, helpers y flujos personalizados
 
-**Free & Opensource Laravel CRM solution for SMEs and Enterprises for complete customer lifecycle management.**
+      Nota: Estas secciones no siguen estrictamente el Modelo Vista Controlador (MVC).
 
-**Read our documentation: [Krayin CRM Docs](https://devdocs.krayincrm.com/)**
+Capa de Presentación:
 
-**We also have a forum for any type of concerns, feature requests, or discussions. Please visit: [Krayin CRM Forums](https://forums.krayincrm.com/)**
+ ■ HTML / CSS / JavaScript
+ ■ Assets públicos
+ ■ Formularios y dashboards
+ 
+Stack Tecnológico: 
 
-# Visit our live [Demo](https://demo.krayincrm.com)
+ ■ Backend: PHP 8.x, Laravel
+ ■ Frontend: HTML, CSS, JavaScript
+ ■ Base de Datos: MySQL
+ ■ Servidor: Apache / Nginx
+ ■ Gestor de dependencias: Composer
 
-<a href="javascript:void();">
-    <img class="flag-img" src="https://raw.githubusercontent.com/krayin/temp-media/master/visit-our-live-demo.png" alt="Chinese" width="100%">
-</a>
+--------------------------------------------------- Requisitos del Sistema -------------------------------------------------------------------
 
-It packs in lots of features that will allow your E-Commerce business to scale in no time:
+Desarrollo:
 
--   Descriptive and Simple Admin Panel.
--   Admin Dashboard.
--   Custom Attributes.
--   Built on Modular Approach.
--   Email parsing via Sendgrid.
--   Check out [these features and more](https://krayincrm.com/features/).
+ ■ PHP >= 8.0
+ ■ Composer
+ ■ MySQL >= 8
+ ■ Laragon / XAMPP / Docker
+ ■ Producción
+ ■ Linux recomendado
+ ■ Apache o Nginx
+ ■ Extensiones PHP habilitadas:
+ ■ pdo
+ ■ mbstring
+ ■ openssl
+ ■ tokenizer
 
-**For Developers**:
-Take advantage of two of the hottest frameworks used in this project -- Laravel and Vue.js -- both of which have been used in Krayin CRM.
+Instalación del Proyecto:
 
-### Documentation
+ ■ git clone <repositorio>
+ ■ cd laravel-crm
+ ■ composer install
+ ■ cp .env.example .env
+ ■ php artisan key:generate
+ ■ php artisan migrate
+ ■ php artisan serve
 
-#### Krayin Documentation [https://devdocs.krayincrm.com](https://devdocs.krayincrm.com)
+      Nota: Configurar las credenciales de base de datos en el archivo .env.
 
-### Requirements
+--------------------------------------------------- Estructura del Proyecto ------------------------------------------------------------------
 
--   **SERVER**: Apache 2 or NGINX.
--   **RAM**: 3 GB or higher.
--   **PHP**: 8.1 or higher
--   **For MySQL users**: 5.7.23 or higher.
--   **For MariaDB users**: 10.2.7 or Higher.
--   **Node**: 8.11.3 LTS or higher.
--   **Composer**: 2.5 or higher
+Laravel estándar:
 
-### Installation and Configuration
+app/
+routes/
+database/
+config/
 
-##### Execute these commands below, in order
+Carpetas personalizadas (Legacy):
 
-```
-composer create-project
-```
+ ■ Estas carpetas contienen la lógica y vistas del CRM fuera del flujo Laravel tradicional:
 
--   Find **.env** file in root directory and change the **APP_URL** param to your **domain**.
+     Nota: Estas carpetas deben ser documentadas cuidadosamente antes de realizar cualquier refactor.
 
--   Also, Configure the **Mail** and **Database** parameters inside **.env** file.
+Seguridad:
 
-```
-php artisan krayin-crm:install
-```
-
-**To execute Krayin**:
-
-##### On server:
-
-Warning: Before going into production mode we recommend you uninstall developer dependencies.
-In order to do that, run the command below:
-
-> composer install --no-dev
-
-```
-Open the specified entry point in your hosts file in your browser or make an entry in hosts file if not done.
-```
-
-##### On local:
-
-```
-php artisan route:clear
-php artisan serve
-```
+ ■ Autenticación gestionada por Laravel
+ ■ Protección CSRF habilitada
+ ■ Validaciones de entrada obligatorias
+ ■ Control de acceso por middleware
 
 
-**How to log in as admin:**
+Flujo General del Sistema:
 
-> _http(s)://example.com/admin/login_
+ ■ Usuario accede al sistema
+ ■ Autenticación vía Laravel
+ ■ Redirección a módulos del CRM
+ ■ Carga de vistas legacy y lógica de negocio
 
-```
-email:admin@example.com
-password:admin123
-```
-### Krayin CRM Multi Tenant SaaS
 
-[Krayin CRM Multi Tenant SaaS](https://krayincrm.com/extensions/krayin-crm-multi-tenant-saas-extension/) Krayin Multitenant SaaS is a Laravel-based CRM solution that allows multiple businesses (tenants) to use a single application instance while keeping their data isolated and secure.
+Extensión del Sistema:
 
-![enter image description here](https://raw.githubusercontent.com/krayin/temp-media/master/krayin-saas.png)
+ ■ Para agregar nuevas funcionalidades:
+ ■ Preferentemente usar Laravel (Controllers + Models)
+ ■ Evitar agregar más lógica legacy
+ ■ Documentar cualquier excepción
 
-### WhatsApp CRM Integration
+Roadmap Técnico:
 
-[Krayin CRM WhatsApp](https://krayincrm.com/extensions/krayin-crm-whatsapp-extension/) Extension enables the store administrator to generate leads via their WhatsApp number.
+ ■ Migración progresiva de módulos legacy a Laravel
+ ■ Centralización de vistas en Blade
+ ■ Refactor de lógica procedural a Services
 
-![enter image description here](https://raw.githubusercontent.com/krayin/temp-media/master/krayin-crm-whatsapp-integration.png)
 
-### VoIP CRM Integration
+Documentación Adicional:
 
-[Krayin CRM VoIP](https://krayincrm.com/extensions/krayin-crm-voip/) extension allows the user to make Trunk calls over a broadband Internet connection and the user can also perform Inbound routes.
+Ver carpeta /docs para documentación detallada:
 
-![enter image description here](https://raw.githubusercontent.com/krayin/temp-media/master/krayin-voip.png)
+ ■ Arquitectura
+ ■ Flujo del CRM
+ ■ Módulos
+ ■ Convenciones
 
-### License
+Autoría:
 
-Krayin CRM is a fully open-source CRM framework which will always be free under the [MIT License](https://github.com/krayin/laravel-crm/blob/2.1/LICENSE).
-
-### Security Vulnerabilities
-
-Please don't disclose security vulnerabilities publicly. If you find any security vulnerability in Krayin CRM then please email us: sales@krayincrm.com.
+Proyecto documentado para uso interno y clientes finales.
